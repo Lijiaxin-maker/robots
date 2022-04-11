@@ -12,7 +12,7 @@ import robocode.Rules;
 import robocode.ScannedRobotEvent;
 import robocode.util.Utils;
 
-public class Wallaby extends AdvancedRobot
+public class Team6Robot extends AdvancedRobot
 {
 	private static final double			FIELD_W				= 1000.0;
 	private static final double			FIELD_H				= 1000.0;
