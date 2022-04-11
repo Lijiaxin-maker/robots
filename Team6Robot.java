@@ -78,7 +78,8 @@ public class Wallaby extends AdvancedRobot
 		{
 			allTargets.put(name, enemy = new double[6]);
 		}
-		xg = enemy[0] = Math.sin((rM = (getHeadingRadians() + e.getBearingRadians()))) * (v0 = enemy[5] = e.getDistance()); //预算敌人的坐标
+		//计算敌人目前的坐标
+		xg = enemy[0] = Math.sin((rM = (getHeadingRadians() + e.getBearingRadians()))) * (v0 = enemy[5] = e.getDistance()); 
 		yg = enemy[1] = Math.cos(rM) * v0;
 		v2 = ((enemy[3] += (Math.abs(v1 = e.getVelocity()))) * Math.signum(v1)) / ++enemy[4];
 
@@ -94,13 +95,14 @@ public class Wallaby extends AdvancedRobot
 			{
 				h0 = avgHeading = avgHeadCount = 0;
 			}
+			//火炮角度
 			if (getGunHeat() < GUNLOCK)
 			{
 				h0 = (avgHeading += Math.abs(h0)) / ++avgHeadCount * Math.signum(h0);
 				if (!Utils.isNear(0.0, x = INF * Utils.normalRelativeAngle(rM - getRadarHeadingRadians()))) setTurnRadarRightRadians(x);
 			}
 
-			bPower = Math.min(BMAX, TARGET_DISTANCE / (eRate = v0));
+			bPower = Math.min(BMAX, TARGET_DISTANCE / (eRate = v0));//火控
 			rM = Double.MAX_VALUE;
 			v0 = i = 0;
 			Rectangle2D bField;
@@ -109,7 +111,7 @@ public class Wallaby extends AdvancedRobot
 				if ((bField = new Rectangle2D.Double(WZ_G, WZ_G, WZ_G_W, WZ_G_H)).contains((x = (rDist * Math.sin(v0))) + getX(),
 						(y = (rDist * Math.cos(v0))) + getY()))
 				{
-					r1 = Math.abs(Math.cos(Math.atan2(enemy[0] - x, enemy[1] - y) - v0));
+					r1 = Math.abs(Math.cos(Math.atan2(enemy[0] - x, enemy[1] - y) - v0));//威胁圈
 					try
 					{
 						Iterator<double[]> iter = allTargets.values().iterator();
