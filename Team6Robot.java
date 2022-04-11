@@ -25,7 +25,7 @@ public class Wallaby extends AdvancedRobot
 	private final static double			DIST_REMAIN			= 20;
 
 	private final static double			GUNLOCK				= 1.0;
-	private final static double			TARGET_FORCE		= 55000;					// 100000 low dmg high surv - 10000 high dmg low surv  
+	private final static double			TARGET_FORCE		= 100000;					// 100000 low dmg high surv - 10000 high dmg low surv  
 	private final static double			TARGET_DISTANCE		= 450.0;					// 400 last best - shoot at TARGET_DISTANCE with bullet 1.0
 
 	private final static double			PI_360				= Math.PI * 2.0;
@@ -50,7 +50,6 @@ public class Wallaby extends AdvancedRobot
 
 	//static long							ramTime;
 
-	@Override
 	public void run()
 	{
 		allTargets = new HashMap<String, double[]>();
@@ -59,7 +58,6 @@ public class Wallaby extends AdvancedRobot
 		setTurnRadarRightRadians(eRate = INF);
 	}
 
-	@Override
 	public void onScannedRobot(ScannedRobotEvent e)
 	{
 		double[] enemy;
@@ -150,8 +148,6 @@ public class Wallaby extends AdvancedRobot
 		}
 		enemy[5] = e.getTime();
 	}
-
-	@Override
 	public void onHitRobot(HitRobotEvent e)
 	{
 		eName = e.getName();
@@ -159,8 +155,6 @@ public class Wallaby extends AdvancedRobot
 		rDist = 50;
 	}
 
-
-	@Override
 	public void onRobotDeath(RobotDeathEvent e)
 	{
 		eRate = INF;
